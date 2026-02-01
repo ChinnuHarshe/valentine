@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Chinnu 💙💗</title>
+<title>For Chinnu💙💗</title>
 
 <style>
 body {
@@ -88,7 +88,7 @@ button {
 
 <!-- Background Music -->
 <audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  <source src="https://archive.org/download/titanic-theme-song/Titanic%20Theme%20Song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
@@ -134,12 +134,12 @@ function yesClicked() {
   typePoem();
 
   // WhatsApp message
-  setTimeout(() => {
-    window.open(
-      "https://wa.me/?text=I%20said%20YES%20💙💗%20Happy%20Valentine’s%20Day!",
-      "_blank"
-    );
-  }, 6000);
+ setTimeout(() => {
+  const message = encodeURIComponent(
+    "I said YES 💙💗 Happy Valentine’s Day 😘"
+  );
+  window.location.href = "https://wa.me/?text=" + message;
+}, 7000);
 }
 
 function typePoem() {
