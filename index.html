@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Chinnu💙💗</title>
+<title>For Chinnu 💙💗</title>
 
 <style>
 body {
@@ -27,20 +27,22 @@ body {
 h1 {
   font-size: 3.2rem;
   color: #ffd6ea;
+  margin-bottom: 10px;
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #9fd3ff;
   max-width: 800px;
+  margin-bottom: 30px;
 }
 
 .buttons {
-  margin-top: 30px;
+  margin: 20px 0;
 }
 
 button {
-  padding: 15px 35px;
+  padding: 15px 40px;
   font-size: 1.2rem;
   border: none;
   border-radius: 40px;
@@ -61,12 +63,23 @@ button {
 }
 
 #message {
-  margin-top: 40px;
-  font-size: 1.3rem;
+  margin-top: 30px;
+  font-size: 1.25rem;
   max-width: 850px;
   line-height: 1.8;
   color: #ffe6f2;
-  min-height: 160px;
+  white-space: pre-line;
+  min-height: 200px;
+}
+
+#gif {
+  margin-top: 25px;
+  display: none;
+}
+
+#gif img {
+  width: 200px;
+  border-radius: 20px;
 }
 
 /* Floating hearts */
@@ -88,15 +101,15 @@ button {
 
 <!-- Background Music -->
 <audio id="music" loop>
-  <source src="https://archive.org/download/titanic-theme-song/Titanic%20Theme%20Song.mp3" type="audio/mpeg">
+  <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
   <h1>Will you be my Valentine, Chinnu? 💙💗</h1>
 
   <h2>
-    I didn’t build this page just to ask a question…  
-    I built it because my heart already knows the answer ✨
+    This isn’t just a question…  
+    it’s something my heart has wanted to say for a long time ✨
   </h2>
 
   <div class="buttons">
@@ -105,48 +118,56 @@ button {
   </div>
 
   <div id="message"></div>
+
+  <div id="gif">
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Celebration">
+  </div>
 </div>
 
 <script>
-const poem = `
-I knew it, Chinnu 💕  
-I knew your smile would choose me before your words did.
+const poemLines = [
+  "I knew it, Chinnu 💕",
+  "",
+  "I knew your heart would say yes",
+  "even before your lips did.",
+  "",
+  "In a world that rushes, you calm me.",
+  "In days that feel heavy, you feel like home.",
+  "",
+  "If love had a name,",
+  "if comfort had a face,",
+  "if forever had a feeling —",
+  "it would quietly look like you.",
+  "",
+  "This Valentine’s Day",
+  "and every day after that…",
+  "I choose you. Always 💙💗"
+];
 
-In a world that rushes, you slow me down.  
-In days that feel heavy, you feel like home.
-
-If love had a name,  
-If comfort had a face,  
-If forever had a feeling —  
-it would quietly look like you.
-
-This Valentine’s Day isn’t just a day for me.  
-It’s the beginning of all my favourite tomorrows…  
-with you 💙💗
-`;
-
-let index = 0;
+let lineIndex = 0;
+let charIndex = 0;
 
 function yesClicked() {
   document.getElementById("music").play();
   document.getElementById("message").innerHTML = "";
-  index = 0;
+  document.getElementById("gif").style.display = "block";
+  lineIndex = 0;
+  charIndex = 0;
   typePoem();
-
-  // WhatsApp message
- setTimeout(() => {
-  const message = encodeURIComponent(
-    "I said YES 💙💗 Happy Valentine’s Day 😘"
-  );
-  window.location.href = "https://wa.me/?text=" + message;
-}, 7000);
 }
 
 function typePoem() {
-  if (index < poem.length) {
-    document.getElementById("message").innerHTML += poem.charAt(index);
-    index++;
-    setTimeout(typePoem, 40);
+  if (lineIndex < poemLines.length) {
+    if (charIndex < poemLines[lineIndex].length) {
+      document.getElementById("message").innerHTML += poemLines[lineIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typePoem, 40);
+    } else {
+      document.getElementById("message").innerHTML += "\n";
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(typePoem, 400);
+    }
   }
 }
 
@@ -157,7 +178,7 @@ function moveNo() {
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-/* Hearts generator */
+/* Floating hearts */
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
